@@ -1,0 +1,17 @@
+.item.browser{
+  display: flex;
+
+  & > .info{
+    margin-left: 20px;
+
+    & > .title{
+      font-size: 0.8em;
+      font-weight: lighter;
+    }
+
+    & > .value{
+      font-size: 1.6em;
+      font-weight: lighter;
+    }
+  }
+}

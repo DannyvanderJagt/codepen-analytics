@@ -1,0 +1,24 @@
+.banner{
+  width: 100%;
+  height: 380px;
+  background: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &:nth-child(odd){
+    background: $banner-background-odd;
+  }
+
+  & > .content{
+    display: flex;
+    margin-top: 50px;
+
+    & > .item{
+      margin: 10px;
+    }
+  }
+
+}

@@ -1,0 +1,31 @@
+{
+  "name": "codepen-analytics",
+  "version": "0.0.1",
+  "description": "Analyze your pen",
+  "main": "server/dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf server/dist && babel server/src --out-dir server/dist -w",
+    "db": "database/mongodb/bin/mongod -dbpath database/content"
+  },
+  "author": "The Suitcase",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.9.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "cheerio": "^0.20.0",
+    "cookie-parser": "^1.4.3",
+    "debug": "^2.2.0",
+    "express": "^4.13.4",
+    "express-device": "^0.4.2",
+    "json2xml": "^0.1.2",
+    "mongoose": "^4.4.19",
+    "mustache": "^2.2.1",
+    "pug": "^2.0.0-beta2",
+    "request": "^2.72.0",
+    "thesuitcase-uid": "^1.2.1",
+    "ua-parser-js": "^0.7.10"
+  }
+}

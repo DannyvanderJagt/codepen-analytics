@@ -1,0 +1,50 @@
+#menu{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  
+  width: 100%;
+  height: 60px;
+
+  background: rgba(255,255,255, 0.9);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  font-weight: lighter;
+  
+  & > .icon{
+    padding: 10px;
+  }
+
+  & > .items{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    &:hover a{
+      opacity: 0.4;
+    }
+
+    & > a {
+      margin: 10px;
+      font-size: 0.9em;
+
+      &:hover{
+        opacity: 1;
+      }
+
+      &:active{
+        opacity: 0.4;
+      }
+    }
+  }
+
+  & > .social > a{
+    padding: 10px;
+    &:last-child{
+      padding-right: 20px;
+    }
+  }
+}

@@ -1,0 +1,186 @@
+doctype
+html
+  head
+    base(href="../" target="_blank")
+    link(href='styles/css/main.css' rel='stylesheet' type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css')
+    
+  body.pen
+
+    //- 
+    //- Menu
+    //- scss: menu.scss
+    //- 
+    #menu 
+
+    //- 
+    //- Header
+    //- scss: header.scss
+    //- 
+    .header
+      img(src='images/codepen-icon.svg')
+      h1 Octopus
+      .info 
+        .item Since: 
+          .value 23 April 2016
+        .item Creator: 
+          a.value(href='http://codepen.io/thesuitcase')
+            | The Suitcase
+
+    //- 
+    //- Features
+    //- scss: banner.scss
+    //- 
+    .banner
+      h1 Browsers
+      h3 Internet portals
+
+      .content
+        .item.browser
+          img(src='images/chrome.svg')
+          .info
+            .title Chrome
+            .value 44%
+        .item.browser 
+          img(src='images/safari.svg')
+          .info
+            .title Safari
+            .value 12%
+        .item.browser 
+          img(src='images/firefox.svg')
+          .info
+            .title Firefox
+            .value 12%
+        .item.browser 
+          img(src='images/opera.svg')
+          .info
+            .title Opera
+            .value 12%
+        .item.browser 
+          img(src='images/ie.svg')
+          .info
+            .title IE
+            .value 12%
+
+
+    .banner
+      h1 Countries
+      h3 Collections of humans
+
+      .content
+        .item.country
+          img(src='images/flag-usa.svg')
+          .info
+            .title USA
+            .value 44%
+        .item.country 
+          img(src='images/flag-netherlands.svg')
+          .info
+            .title Netherlands
+            .value 25%
+        .item.country 
+          img(src='images/flag-uk.svg')
+          .info
+            .title UK
+            .value 12%
+        .item.country 
+          img(src='images/flag-spain.svg')
+          .info
+            .title Spain
+            .value 9%
+        .item.country 
+          img(src='images/flag-italy.svg')
+          .info
+            .title Italy
+            .value 8%
+        .item.country 
+          img(src='images/flag-belgium.svg')
+          .info
+            .title Belgium
+            .value 2%
+
+    .banner
+      h1 Human Interaction
+      h3 Appreciation from real humans
+
+      .content
+        .item.humaninteraction
+          img(src='images/human-interaction-likes.svg')
+          .info
+            .title Likes
+            .value 322
+        .item.humaninteraction 
+          img(src='images/human-interaction-views.svg')
+          .info
+            .title Views
+            .value 4.603
+        .item.humaninteraction 
+          img(src='images/human-interaction-comments.svg')
+          .info
+            .title Comments
+            .value 19
+        .item.humaninteraction 
+          img(src='images/human-interaction-twitter.svg')
+          .info
+            .title Tweets
+            .value 92
+
+
+    .banner 
+      h1 Operation Systems
+      h3 Everyone has preferences
+      .content
+        .item.humaninteraction
+          img(src='images/os-android.svg')
+          .info
+            .title Android
+            .value 4%
+        .item.humaninteraction 
+          img(src='images/os-ios.svg')
+          .info
+            .title IOS
+            .value 12%
+        .item.humaninteraction 
+          img(src='images/os-osx.svg')
+          .info
+            .title OSX
+            .value 84%
+        .item.humaninteraction 
+          img(src='images/os-windows.svg')
+          .info
+            .title Windows
+            .value 4%
+
+
+
+    .banner 
+      h1 Devices
+      h3 Electrical portals to the internet.
+      .content
+        .item.humaninteraction
+          img(src='images/device-tablet.svg')
+          .info
+            .title Tablet
+            .value 4%
+        .item.humaninteraction 
+          img(src='images/device-mobile.svg')
+          .info
+            .title Phone
+            .value 12%
+        .item.humaninteraction 
+          img(src='images/device-desktop.svg')
+          .info
+            .title Desktop
+            .value 84%
+
+
+    .footer
+      .item.left
+        a(href='http://codepen.io/')
+          img(src='images/codepen-logo.svg')
+        .description Creators of codepen
+      .item.center
+      .item.right
+        .description All our icons are created by:
+        a(href='http://nucleoapp.com/')
+          img(src='images/nucleo.svg')

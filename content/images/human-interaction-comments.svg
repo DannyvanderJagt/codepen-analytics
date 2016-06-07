@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="46px" height="44px" viewBox="0 0 46 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>ui-color-3_chat-33</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Browser-Copy-2" transform="translate(-789.000000, -1584.000000)">
+            <g id="ui-color-3_chat-33" transform="translate(789.000000, 1584.000000)">
+                <g id="Group">
+                    <path d="M46,27 C46,19.832 38.374,14 29,14 C19.626,14 12,19.832 12,27 C12,34.168 19.626,40 29,40 C30.119,40 31.211,39.912 32.27,39.753 L40.553,43.894 C40.694,43.965 40.847,44 41,44 C41.183,44 41.365,43.95 41.526,43.851 C41.82,43.668 42,43.347 42,43 L42,35.36 C44.492,33.097 46,30.182 46,27 L46,27 Z" id="Shape" fill="#BADEFC"></path>
+                    <path d="M21,0 C9.42,0 0,7.626 0,17 C0,20.603 1.381,24.038 4,26.96 L4,37 C4,37.347 4.18,37.668 4.474,37.851 C4.635,37.95 4.817,38 5,38 C5.153,38 5.306,37.965 5.447,37.895 L14.777,33.23 C16.812,33.741 18.903,34 21,34 C32.58,34 42,26.374 42,17 C42,7.626 32.58,0 21,0 L21,0 Z" id="Shape" fill="#43A6DD"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="42px" height="30px" viewBox="0 0 42 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>ui-color-1_eye-17</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Browser-Copy-2" transform="translate(-657.000000, -1588.000000)">
+            <g id="ui-color-1_eye-17" transform="translate(657.000000, 1588.000000)">
+                <g id="Group">
+                    <path d="M21,30 C8.56249,30 0.46973,16.08838 0.13184,15.49609 C-0.04296,15.18994 -0.04394,14.81396 0.12989,14.50683 C0.46582,13.91455 8.49902,0 21,0 C33.43749,0 41.53027,13.91162 41.86816,14.50391 C42.04492,14.81251 42.04394,15.19141 41.86621,15.49903 C41.52539,16.09131 33.37305,30 21,30 L21,30 Z" id="Shape" fill="#E6E6E6"></path>
+                    <circle id="Oval" fill="#43A6DD" cx="21" cy="15" r="11"></circle>
+                    <circle id="Oval" fill="#444444" cx="21" cy="15" r="6"></circle>
+                    <circle id="Oval" fill="#FFFFFF" cx="16.5" cy="11.5" r="2.5"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
