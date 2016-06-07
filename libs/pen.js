@@ -23,7 +23,7 @@ var getJSONP = function (url, success) {
   head.appendChild(script);
 };
 
-var url = 'http://localhost.io:8003/pen/post?' + result.join('&');
+var url = 'http://localhost.io:8003/pen/post/'+ uniqueid +'?' + result.join('&');
 
 getJSONP(url, function(err, data){
   console.log('done');
