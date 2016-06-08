@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf server/dist && babel server/src --out-dir server/dist -w",
+    "scraper": "rm -rf scraper/dist && babel scraper/src --out-dir scraper/dist -w",
     "db": "database/mongodb/bin/mongod -dbpath database/content"
   },
   "author": "The Suitcase",
@@ -21,12 +22,14 @@
     "debug": "^2.2.0",
     "express": "^4.13.4",
     "express-device": "^0.4.2",
+    "fs-extra": "^0.30.0",
     "json2xml": "^0.1.2",
     "mongoose": "^4.4.19",
     "mustache": "^2.2.1",
     "pug": "^2.0.0-beta2",
     "request": "^2.72.0",
     "thesuitcase-uid": "^1.2.1",
+    "tough-cookie-filestore": "0.0.1",
     "ua-parser-js": "^0.7.10"
   }
 }
