@@ -7,4 +7,3 @@ import Libs from './libs';
 import PenHandler from './handlers/pen';
 // import UserHandler from './handler/user';
 
-Database.connect()

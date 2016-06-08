@@ -172,15 +172,20 @@ var Handler = {
     var result = data.result;
 
     // Prepare data.
-    var inc = (_inc = {}, _defineProperty(_inc, 'browsers.total', 1), _defineProperty(_inc, 'browsers.' + result.browser.name.toLowerCase() + '.total', 1), _defineProperty(_inc, 'browsers.' + result.browser.name.toLowerCase() + '.major.' + result.browser.major, 1), _defineProperty(_inc, 'browsers.' + result.browser.name.toLowerCase() + '.minor.' + result.browser.version.replace(/\./g, '-'), 1), _defineProperty(_inc, 'devices.total', 1), _defineProperty(_inc, 'devices.' + result.device.type, 1), _defineProperty(_inc, 'displays.total', 1), _defineProperty(_inc, 'displays.sizes.' + result.display.width + 'x' + result.display.height, 1), _defineProperty(_inc, 'displays.colordepth.' + result.display.colorDepth, 1), _defineProperty(_inc, 'displays.pixeldepth.' + result.display.pixelDepth, 1), _defineProperty(_inc, 'windows.total', 1), _defineProperty(_inc, 'windows.sizes.' + result.window.width + 'x' + result.window.height, 1), _defineProperty(_inc, 'windows.devicePixelRatios.' + result.window.devicePixelRatio, 1), _inc);
+    var inc = (_inc = {}, _defineProperty(_inc, 'browsers.total', 1), _defineProperty(_inc, 'browsers.' + result.browser.name.toLowerCase() + '.total', 1), _defineProperty(_inc, 'browsers.' + result.browser.name.toLowerCase() + '.major.' + result.browser.major, 1), _defineProperty(_inc, 'browsers.' + result.browser.name.toLowerCase() + '.minor.' + result.browser.version.replace(/\./g, '-'), 1), _defineProperty(_inc, 'devices.total', 1), _defineProperty(_inc, 'devices.' + result.device.type, 1), _defineProperty(_inc, 'displays.total', 1), _defineProperty(_inc, 'displays.sizes.' + result.display.width + 'x' + result.display.height, 1), _defineProperty(_inc, 'displays.colordepth.' + result.display.colorDepth, 1), _defineProperty(_inc, 'displays.pixeldepth.' + result.display.pixelDepth, 1), _defineProperty(_inc, 'windows.total', 1), _defineProperty(_inc, 'windows.sizes.' + result.window.width + 'x' + result.window.height, 1), _defineProperty(_inc, 'windows.devicePixelRatios.' + result.window.devicePixelRatio, 1), _defineProperty(_inc, 'engines.total', 1), _defineProperty(_inc, 'engines.' + result.engine.name.toLowerCase() + '.total', 1), _defineProperty(_inc, 'engines.' + result.engine.name.toLowerCase() + '.' + result.engine.version.replace(/\./g, '-'), 1), _defineProperty(_inc, 'os.total', 1), _defineProperty(_inc, 'os.' + result.os.name.toLowerCase() + '.total', 1), _defineProperty(_inc, 'os.' + result.os.name.toLowerCase() + '.' + result.os.version.replace(/\./g, '-'), 1), _inc);
 
     // Process data.
-    _database2.default.models.Pen.findOneAndUpdate({ id: data.pen }, { '$inc': inc }, { upsert: true, setDefaultsOnInsert: true, new: true }, function (err, pen) {
-      console.log(err, pen);
+    _database2.default.models.Pen.findOneAndUpdate({ id: data.pen }, {
+      '$inc': inc,
+      'lastUsed': Date.now()
+    }, { upsert: true, setDefaultsOnInsert: true, new: true }, function (err, pen) {
+      if (err) {
+        next(new Error('Data could not be saved!'));
+        return;
+      }
+
       next(null, data);
     });
-
-    // next(null, data);
   }
 };
 

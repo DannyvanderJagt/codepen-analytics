@@ -446,9 +446,21 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  overflow: hidden; }
   .header > .title {
     flex: 1; }
+  .header > .header-image {
+    animation: slide-in 1s ease-in-out; }
+
+@keyframes slide-in {
+  0% {
+    transform: translateY(150px);
+    opacity: 0; }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1; } }
 
 .footer {
   display: flex;

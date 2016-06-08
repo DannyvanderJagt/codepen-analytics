@@ -185,28 +185,37 @@ let Handler = {
       [`windows.total`]: 1,
       [`windows.sizes.${result.window.width}x${result.window.height}`]:1,
       [`windows.devicePixelRatios.${result.window.devicePixelRatio}`]:1,
+
+      // Engines
+      [`engines.total`]: 1,
+      [`engines.${result.engine.name.toLowerCase()}.total`]: 1,
+      [`engines.${result.engine.name.toLowerCase()}.${result.engine.version.replace(/\./g, '-')}`]: 1,
+    
+      // Operation Systems.
+      [`os.total`]: 1,
+      [`os.${result.os.name.toLowerCase()}.total`]: 1,
+      [`os.${result.os.name.toLowerCase()}.${result.os.version.replace(/\./g, '-')}`]: 1,
     };
     
     // Process data.
     Database.models.Pen.findOneAndUpdate(
       {id: data.pen}, 
-      {'$inc': inc},
+      {
+        '$inc': inc,
+        'lastUsed': Date.now(),
+      },
       {upsert: true, setDefaultsOnInsert: true, new: true}, 
       (err, pen) => {
-        console.log(err, pen);
+        if(err){
+          next(new Error('Data could not be saved!'))
+          return;
+        }
+
         next(null, data);
       }
     );
-
-
-    // next(null, data);
   },
-
-
-
-
-
-
+  
 }
 
 // Add paths.

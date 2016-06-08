@@ -17,9 +17,3 @@ var _pen = require('./handlers/pen');
 var _pen2 = _interopRequireDefault(_pen);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// import UserHandler from './handler/user';
-
-_database2.default.connect();
-
-// Handlers.

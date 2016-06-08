@@ -26,6 +26,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/index.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/index.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/styles\/scss\/banner.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -37,15 +46,6 @@
       "outputAbbreviatedPath" : "\/styles\/css\/banner.css",
       "fileType" : 4,
       "debugStyle" : 0
-    },
-    "\/index.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/index.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
     },
     "\/styles\/scss\/menu.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -94,6 +94,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/styles\/css\/main.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/css\/main.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
     "\/styles\/scss\/main.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -105,15 +114,6 @@
       "outputAbbreviatedPath" : "\/styles\/css\/main.css",
       "fileType" : 4,
       "debugStyle" : 0
-    },
-    "\/styles\/css\/main.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/css\/main.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
     },
     "\/styles\/scss\/footer.scss" : {
       "ignoreWasSetByUser" : 0,
