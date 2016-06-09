@@ -134,8 +134,11 @@ var Scraper = {
       var title = $('.pen-title-link').html();
       title = title.replace(/\n\ +/g, '');
 
+      var createdAt = $('#details-tab-description .dateline time').html();
+      createdAt = createdAt.replace(/\n\ +/g, '');
+
       if (cb) {
-        Scraper.storeInformationInDatabase(pen, { views: views, likes: likes, comments: comments, ownerHash: ownerHash, owner: owner, title: title }, cb);
+        Scraper.storeInformationInDatabase(pen, { views: views, likes: likes, comments: comments, ownerHash: ownerHash, owner: owner, title: title, createdAt: createdAt }, cb);
       }
     });
   },
@@ -148,7 +151,8 @@ var Scraper = {
       owner: {
         hash: data.ownerHash,
         full: data.owner
-      }
+      },
+      createdAt: data.createdAt
     }, { upsert: true, setDefaultsOnInsert: true, new: true }, function (err, pen) {
       if (err) {
         cb(new Error('Data could not be saved!'));
@@ -165,26 +169,5 @@ Scraper.start();
 setInterval(function () {
   Scraper.start();
 }, 3600000);
-
-// Database.models.Pen.find(
-//   {},
-//   (err, pens){
-//     console.log(pens);
-//   }
-// );
-
-// console.log(Scraper.jar)
-
-// Scraper.getInformationFromPen('WrdQrr', (data) => {
-//   console.log(data);
-//   Scraper.storeInformationInDatabase('WrdQrr', data, (err, pen) => {
-//     console.log('stored', err, pen)
-//   })
-// //   Scraper.close();
-// //   // Execute request sync for cookie jar.
-// //   // Scraper.getInformationFromPen('WrdQrr', (data) => {
-// //   //   console.log(data);
-// //   // });
-// });
 
 exports.default = Scraper;

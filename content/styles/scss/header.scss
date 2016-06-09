@@ -1,6 +1,6 @@
 .header{
   width: 100%;
-  height: 500px;
+  // height: 100%;
   margin-top: 60px;
 
   border-bottom: 1px solid $border;
@@ -13,9 +13,12 @@
 
   & > .title{
     flex: 1;
+    margin: 100px;
   }
 
   & > .header-image{
+    max-width: 676px;
+    width: 80%;
     animation: slide-in 1s ease-in-out;
   }
 }

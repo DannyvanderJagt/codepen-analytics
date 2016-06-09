@@ -41,8 +41,12 @@ let Handler = {
       return;
     }
 
-    Database.models.Pen.findOne(
+    Database.models.Pen.findOneAndUpdate(
       {id: req.params.id}, 
+      {
+        lastUsed: Date.now(),
+      },
+      {new: true, fields: {_id: false, __v: false}}, 
       (err, pen) => {
         if(err || !pen){
           this.reject(res, 'json');
@@ -62,8 +66,12 @@ let Handler = {
       return;
     }
 
-    Database.models.Pen.findOne(
+    Database.models.Pen.findOneAndUpdate(
       {id: req.params.id}, 
+      {
+        lastUsed: Date.now(),
+      },
+      {new: true, fields: {_id: false, __v: false}}, 
       (err, pen) => {
         if(err || !pen){
           res.render('notfound');
@@ -81,6 +89,7 @@ let Handler = {
       return;
     }
 
+    let cookies = req.cookies;
     let query = req.query;
 
     if(!query){
@@ -97,8 +106,10 @@ let Handler = {
           next,
           params: req.params, 
           query,
+          cookies,
         }
       ),
+      this.setCookie,
       this.collectResult,
       this.updateDatabase,
     ], (err, result) => {
@@ -126,6 +137,29 @@ let Handler = {
 
       next(new Error('Not Allowed!'), data);
     });
+  },
+
+  setCookie(data, next){
+    let cookies = data.cookies;
+    let pens = [];
+    let expires = new Date(Date.now() + 360000);
+
+    if(cookies['codepen-analytics']){
+      pens = JSON.parse(cookies['codepen-analytics']);
+    }    
+
+    // Disabled: Cookies on safari not working due to iframe.
+    if(pens.indexOf(data.pen) > -1){
+      // next(new Error('already visited!'), data)
+      // return;
+    }
+
+    pens.push(data.pen);
+    
+    // Expires in one day.
+    data.res.cookie('codepen-analytics', JSON.stringify(pens));
+
+    next(null, data)
   },
 
   collectResult(data, next){

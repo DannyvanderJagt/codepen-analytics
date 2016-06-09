@@ -108,8 +108,11 @@ let Scraper = {
       let title = $('.pen-title-link').html();
       title = title.replace(/\n\ +/g, '');
 
+      let createdAt = $('#details-tab-description .dateline time').html();
+      createdAt = createdAt.replace(/\n\ +/g, '');
+
       if(cb){
-        Scraper.storeInformationInDatabase(pen, {views, likes, comments, ownerHash, owner, title}, cb);
+        Scraper.storeInformationInDatabase(pen, {views, likes, comments, ownerHash, owner, title, createdAt}, cb);
       }
     })
   },
@@ -125,7 +128,8 @@ let Scraper = {
         owner: {
           hash: data.ownerHash,
           full: data.owner
-        }
+        },
+        createdAt: data.createdAt
       },
       {upsert: true, setDefaultsOnInsert: true, new: true}, 
       (err, pen) => {
@@ -146,29 +150,6 @@ Scraper.start();
 setInterval(() => {
   Scraper.start();
 }, 3600000) 
-
-
-// Database.models.Pen.find(
-//   {},
-//   (err, pens){
-//     console.log(pens);
-//   }
-// );
-
-// console.log(Scraper.jar)
-
-// Scraper.getInformationFromPen('WrdQrr', (data) => {
-//   console.log(data);
-//   Scraper.storeInformationInDatabase('WrdQrr', data, (err, pen) => {
-//     console.log('stored', err, pen)
-//   })
-// //   Scraper.close();
-// //   // Execute request sync for cookie jar.
-// //   // Scraper.getInformationFromPen('WrdQrr', (data) => {
-// //   //   console.log(data);
-// //   // });
-// });
-
 
 
 export default Scraper;

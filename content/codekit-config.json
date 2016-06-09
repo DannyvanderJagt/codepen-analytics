@@ -2,17 +2,25 @@
   "CodeKitInfo" : "This is a CodeKit project configuration file. It is designed to sync project settings across multiple machines. Modifying the contents of this file can be a poor life decision if you don't know what you're doing. This file is not useful unless accompanied by the project that created it in CodeKit. For more information, see: http:\/\/incident57.com\/codekit",
   "creatorBuild" : "8403",
   "files" : {
-    "\/styles\/scss\/pen.scss" : {
+    "\/404.html" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/scss\/pen.scss",
+      "inputAbbreviatedPath" : "\/404.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/pug\/404.jade" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 1,
+      "inputAbbreviatedPath" : "\/pug\/404.jade",
       "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/css\/pen.css",
-      "fileType" : 4,
-      "debugStyle" : 0
+      "compileDebug" : 1,
+      "outputAbbreviatedPath" : "\/404.html",
+      "fileType" : 512
     },
     "\/styles\/scss\/banners\/humaninteration.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -26,24 +34,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/index.html" : {
+    "\/styles\/scss\/pen.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/index.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/styles\/scss\/banner.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/scss\/banner.scss",
+      "inputAbbreviatedPath" : "\/styles\/scss\/pen.scss",
       "outputStyle" : 0,
       "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/styles\/css\/banner.css",
+      "outputAbbreviatedPath" : "\/styles\/css\/pen.css",
       "fileType" : 4,
       "debugStyle" : 0
     },
@@ -59,16 +58,26 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/pug\/index.jade" : {
+    "\/styles\/scss\/banner.scss" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
-      "outputPathIsSetByUser" : 1,
-      "inputAbbreviatedPath" : "\/pug\/index.jade",
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/scss\/banner.scss",
       "outputStyle" : 0,
-      "compileDebug" : 1,
-      "outputAbbreviatedPath" : "\/index.html",
-      "fileType" : 512
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/styles\/css\/banner.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/index.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/index.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/styles\/scss\/normalize.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -93,6 +102,17 @@
       "outputAbbreviatedPath" : "\/styles\/css\/base.css",
       "fileType" : 4,
       "debugStyle" : 0
+    },
+    "\/pug\/index.jade" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 1,
+      "inputAbbreviatedPath" : "\/pug\/index.jade",
+      "outputStyle" : 0,
+      "compileDebug" : 1,
+      "outputAbbreviatedPath" : "\/index.html",
+      "fileType" : 512
     },
     "\/styles\/css\/main.css" : {
       "ignoreWasSetByUser" : 0,

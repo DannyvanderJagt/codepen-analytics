@@ -67,7 +67,9 @@ var Handler = {
       return;
     }
 
-    _database2.default.models.Pen.findOne({ id: req.params.id }, function (err, pen) {
+    _database2.default.models.Pen.findOneAndUpdate({ id: req.params.id }, {
+      lastUsed: Date.now()
+    }, { new: true, fields: { _id: false, __v: false } }, function (err, pen) {
       if (err || !pen) {
         _this.reject(res, 'json');
         return;
@@ -84,7 +86,9 @@ var Handler = {
       return;
     }
 
-    _database2.default.models.Pen.findOne({ id: req.params.id }, function (err, pen) {
+    _database2.default.models.Pen.findOneAndUpdate({ id: req.params.id }, {
+      lastUsed: Date.now()
+    }, { new: true, fields: { _id: false, __v: false } }, function (err, pen) {
       if (err || !pen) {
         res.render('notfound');
         return;
@@ -100,6 +104,7 @@ var Handler = {
       return;
     }
 
+    var cookies = req.cookies;
     var query = req.query;
 
     if (!query) {
@@ -112,8 +117,9 @@ var Handler = {
       res: res,
       next: next,
       params: req.params,
-      query: query
-    }), this.collectResult, this.updateDatabase], function (err, result) {
+      query: query,
+      cookies: cookies
+    }), this.setCookie, this.collectResult, this.updateDatabase], function (err, result) {
       if (err) {
         result.res.json({ valid: false });
         return;
@@ -137,6 +143,28 @@ var Handler = {
 
       next(new Error('Not Allowed!'), data);
     });
+  },
+  setCookie: function setCookie(data, next) {
+    var cookies = data.cookies;
+    var pens = [];
+    var expires = new Date(Date.now() + 360000);
+
+    if (cookies['codepen-analytics']) {
+      pens = JSON.parse(cookies['codepen-analytics']);
+    }
+
+    // Disabled: Cookies on safari not working due to iframe.
+    if (pens.indexOf(data.pen) > -1) {
+      // next(new Error('already visited!'), data)
+      // return;
+    }
+
+    pens.push(data.pen);
+
+    // Expires in one day.
+    data.res.cookie('codepen-analytics', JSON.stringify(pens));
+
+    next(null, data);
   },
   collectResult: function collectResult(data, next) {
     var result = {};

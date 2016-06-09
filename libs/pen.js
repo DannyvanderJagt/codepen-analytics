@@ -4,8 +4,8 @@ var result = [
   'display_height=' + screen.height,
   'display_colordepth=' + screen.colorDepth,
   'display_pixeldepth=' + screen.pixelDepth,
-  'window_width=' + window.innerWidth,
-  'window_height=' + window.innerHeight,
+  'window_width=' + Math.round(window.innerWidth/100)*100,
+  'window_height=' + Math.round(window.innerHeight/100)*100,
   'window_devicepixelratio=' + window.devicePixelRatio
 ];
 

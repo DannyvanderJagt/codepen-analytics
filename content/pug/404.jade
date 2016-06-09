@@ -1,0 +1,53 @@
+doctype
+html
+  head
+    link(href='styles/css/main.css' rel='stylesheet' type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css')
+  body.pen
+
+    //- 
+    //- Menu
+    //- scss: menu.scss
+    //- 
+    #menu 
+      a.icon(href='/')
+        img(src='images/suitcase-icon.svg')
+
+      .items
+        a.item(href='/features') Features
+        a.item(href='/usage') Usage
+        a.item(href='/privacy') Privacy
+
+      .social
+        a(href='https://twitter.com/TheSuitcaseIO')
+          img(src='images/twitter.svg')
+        a(href='https://codepen.io/thesuitcase')
+          img(src='images/codepen.svg')
+        a(href='https://codepen.io/thesuitcase')
+          img(src='images/love.svg')
+
+    //- 
+    //- Header
+    //- scss: header.scss
+    //- 
+    .header 
+      img(src='images/codepen-icon.svg')
+      h1 404 
+
+      .quote
+        “We could not found what you where looking for.”
+
+
+    //- 
+    //- Footer
+    //- 
+    .footer
+      .item.left
+        a(href='http://codepen.io/')
+          img(src='images/codepen-logo.svg')
+        .description Creators of codepen
+      .item.center
+      .item.right
+        .description All our icons are created by:
+        a(href='http://nucleoapp.com/')
+          img(src='images/nucleo.svg')

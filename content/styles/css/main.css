@@ -396,31 +396,48 @@ h3 {
   left: 0px;
   width: 100%;
   height: 60px;
-  background: rgba(255, 255, 255, 0.9);
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: row;
+  background: rgba(255, 255, 255, 0.9);
   font-weight: lighter; }
   #menu > .icon {
-    padding: 10px; }
-  #menu > .items {
     flex: 1;
+    padding: 10px;
+    margin-left: 10px; }
+    #menu > .icon img {
+      height: 20px; }
+  #menu > .items {
+    position: absolute;
+    flex: 1;
+    width: 100%;
+    left: 0px;
+    top: 0px;
     display: flex;
-    justify-content: center; }
+    justify-content: center;
+    margin-top: 5px; }
     #menu > .items:hover a {
       opacity: 0.4; }
     #menu > .items > a {
-      margin: 10px;
-      font-size: 0.9em; }
+      margin: 10px 15px;
+      padding: 5px 0px;
+      font-size: 0.9em;
+      border-bottom: 2px solid rgba(0, 0, 0, 0); }
       #menu > .items > a:hover {
-        opacity: 1; }
+        opacity: 1;
+        border-bottom: 2px solid #4a90e2; }
       #menu > .items > a:active {
         opacity: 0.4; }
-  #menu > .social > a {
-    padding: 10px; }
-    #menu > .social > a:last-child {
-      padding-right: 20px; }
+  #menu > .social {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; }
+    #menu > .social > a {
+      padding: 10px; }
+      #menu > .social > a > img {
+        height: 15px; }
+      #menu > .social > a:last-child {
+        padding-right: 20px; }
 
 .banner {
   width: 100%;
@@ -440,7 +457,6 @@ h3 {
 
 .header {
   width: 100%;
-  height: 500px;
   margin-top: 60px;
   border-bottom: 1px solid #e2e2e2;
   display: flex;
@@ -449,8 +465,11 @@ h3 {
   justify-content: center;
   overflow: hidden; }
   .header > .title {
-    flex: 1; }
+    flex: 1;
+    margin: 100px; }
   .header > .header-image {
+    max-width: 676px;
+    width: 80%;
     animation: slide-in 1s ease-in-out; }
 
 @keyframes slide-in {
