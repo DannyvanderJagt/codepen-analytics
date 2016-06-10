@@ -1,0 +1,65 @@
+.banner{
+  width: 100%;
+  // height: 380px;
+  background: white;
+  margin-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  padding: 20px 0px;
+  flex-direction: column;
+
+  &:nth-child(odd){
+    // background: $banner-background-odd;
+  }
+
+  & > .title{
+    font-size: 1.3em;
+  }
+
+  & > .description{
+    font-size: 0.9em;
+    margin-top: 4px;
+    font-weight: lighter;
+    opacity: 0.6;
+  }
+
+  & > .content{
+    display: flex;
+    margin-top: 50px;
+
+    & > .item{
+      margin: 10px;
+    }
+  }
+
+  .tile{
+    padding: 20px 30px 15px 30px;
+    border-radius: 5px;
+    background: $tile-background;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 5px;
+
+    & > img{
+      max-width: 30px;
+      max-height: 35px;
+    }
+
+    & > .title{
+      margin: 15px 0px 0px 0px;
+      font-size: 0.8em;
+      font-weight: lighter;
+      opacity: .6;
+    }
+
+    & > .value{
+      margin: 3px 0px 0px 0px;
+      font-weight: lighter;
+      font-size: 1.2em;
+    }
+  }
+
+}

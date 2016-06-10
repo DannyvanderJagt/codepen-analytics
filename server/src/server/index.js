@@ -14,7 +14,7 @@ let app = Express()
 
 // Middleware.
 app.set('view engine', 'pug')
-app.set('views', Path.join(__dirname, '../../../content'))
+app.set('views', Path.join(__dirname, '../../../content/views'))
 
 app.use(CookieParser(Config.cookieSecret));
 

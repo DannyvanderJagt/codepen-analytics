@@ -1,0 +1,15 @@
+
+.badge{
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 0.8em;
+  font-weight: bold;
+  
+  &.popular{
+    background: $badge-popular;
+  }
+
+  &.picked{
+    background: $badge-picked;
+  }
+}

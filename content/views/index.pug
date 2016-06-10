@@ -1,0 +1,26 @@
+doctype
+html
+  head
+    link(href='styles/css/main.css' rel='stylesheet' type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css')
+  body
+
+    //- 
+    //- Menu
+    //- scss: menu.scss
+    //- 
+    include ../partials/menu.pug
+
+    //- 
+    //- Header
+    //- scss: header.scss
+    //- 
+    .showcase 
+      img.title(src='images/header/title.svg')
+      img.header-image(src='images/header/tiles.svg')
+
+            
+    //- 
+    //- Footer
+    //- 
+    include ../partials/footer.pug

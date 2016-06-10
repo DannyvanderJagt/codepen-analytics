@@ -1,0 +1,272 @@
+doctype
+html
+  head
+    base(href="../" target="_blank")
+    link(href='styles/css/main.css' rel='stylesheet' type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css')
+    
+  body
+    .pen
+
+      //- 
+      //- Menu
+      //- scss: menu.scss
+      //- 
+      include ../partials/menu.pug
+
+      //- 
+      //- Header
+      //- scss: header.scss
+      //- 
+      .header
+        img.codepen-icon(src='images/logos/codepen-icon.svg')
+        h1 #{title || '#' + id}
+        .info 
+          if createdAt
+            .item Created: 
+              .value #{new Date(createdAt).getTime()}
+
+          if owner && owner.full
+            .item By: 
+              a.value(href='http://codepen.io/thesuitcase') #{owner.full}
+      
+
+      .badges
+        .badge.popular Popular
+        .badge.picked Picked
+      
+      .line
+
+      .description
+         | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+
+      .line
+
+      //- 
+      //- Features
+      //- scss: banner.scss
+      //- 
+      .section
+        .banner
+          .title Interactions
+          .description Views, likes and comments
+          .content
+            .tile
+              img(src='images/interactions/likes.svg')
+              .title Likes
+              .value 102
+            .tile
+              img(src='images/interactions/views.svg')
+              .title Views
+              .value 10.203
+            .tile
+              img(src='images/interactions/time.svg')
+              .title Average time
+              .value 2.1 Minutes
+            .tile
+              img(src='images/interactions/comments.svg')
+              .title Comments
+              .value 3
+
+      .line
+      .section
+        .banner
+          .title Achivements
+          .description Special milestones
+          .content
+            .tile
+              img(src='images/achivements/medal.svg')
+              .title Picked
+              .value 23 May
+            .tile
+              img(src='images/achivements/popular.svg')
+              .title Popular
+              .value 25 May
+
+        .banner
+          .title Support
+          .description Keep track of your technologies.
+          .content
+            .tile
+              img(src='images/support/html.svg')
+              .title Html
+              .value 100%
+            .tile
+              img(src='images/support/css.svg')
+              .title Css
+              .value 94%
+            .tile
+              img(src='images/support/javascript.svg')
+              .title Javascript
+              .value 85%
+
+      .line
+      .section
+        .banner
+          .title Pen Size
+          .description Average width and height
+          .content
+            .tile
+              img(src='images/size/width.svg')
+              .title Width
+              .value 324px
+            .tile
+              img(src='images/size/height.svg')
+              .title Height
+              .value 310px
+
+        .banner
+          .title Pixel Ratio
+          .description Usefull for image support
+          .content
+            .tile
+              img(src='images/pixelratio/1x.svg')
+              .title 1:1
+              .value 30%
+            .tile
+              img(src='images/pixelratio/2x.svg')
+              .title 2:1
+              .value 64%
+            .tile
+              img(src='images/pixelratio/3x.svg')
+              .title 3:1
+              .value 6%
+
+      .line
+      .section
+        .banner
+          .title View
+          .description Editor of Full page
+          .content
+            .tile
+              img(src='images/views/editor.svg')
+              .title Editor
+              .value 85%
+            .tile
+              img(src='images/views/full.svg')
+              .title Full Page
+              .value 15%
+
+        .banner
+          .title Editor Orientation
+          .description Editor view
+          .content
+            .tile
+              img(src='images/views/bottom.svg')
+              .title Bottom
+              .value 14%
+            .tile
+              img(src='images/views/left.svg')
+              .title Left
+              .value 43%
+            .tile
+              img(src='images/views/right.svg')
+              .title Right
+              .value 43%
+
+      .line
+      .section
+        .banner
+          .title Browsers
+          .description The 5 most used browsers
+          .content
+            .tile
+              img(src='images/browsers/chrome.svg')
+              .title Chrome
+              .value 43%
+            .tile
+              img(src='images/browsers/safari.svg')
+              .title Safari
+              .value 28%
+            .tile
+              img(src='images/browsers/firefox.svg')
+              .title Firefox
+              .value 16%
+            .tile
+              img(src='images/browsers/opera.svg')
+              .title Opera
+              .value 7%
+            .tile
+              img(src='images/browsers/ie.svg')
+              .title IE
+              .value 6%
+
+      .line
+      .section
+        .banner
+          .title Devices
+          .description Tablet, phone and desktop
+          .content
+            .tile
+              img(src='images/devices/tablet.svg')
+              .title Tablet
+              .value 3%
+            .tile
+              img(src='images/devices/mobile.svg')
+              .title Phone
+              .value 12%
+            .tile
+              img(src='images/devices/desktop.svg')
+              .title Desktop
+              .value 85%
+
+        .banner
+          .title Operation Systems
+          .description The 3 most used Operation systems
+          .content
+            .tile
+              img(src='images/os/osx.svg')
+              .title OSX
+              .value 32%
+            .tile
+              img(src='images/os/windows.svg')
+              .title Left
+              .value 53%
+            .tile
+              img(src='images/os/android.svg')
+              .title Right
+              .value 24%
+
+      .line
+      .section
+        .banner
+          .title Countries
+          .description The top 6 countries
+          .content
+            .tile
+              img(src='images/countries/usa.svg')
+              .title USA
+              .value 43%
+            .tile
+              img(src='images/countries/netherlands.svg')
+              .title Netherlands
+              .value 28%
+            .tile
+              img(src='images/countries/uk.svg')
+              .title UK
+              .value 16%
+            .tile
+              img(src='images/countries/spain.svg')
+              .title Spain
+              .value 7%
+            .tile
+              img(src='images/countries/italy.svg')
+              .title Italy
+              .value 6%
+            .tile
+              img(src='images/countries/canada.svg')
+              .title Canada
+              .value 2%
+
+      .line
+      .section
+        .banner
+          .title Try another pen!
+          .description Enter an url or pen id
+          
+
+
+    //- 
+    //- Footer
+    //- 
+    include ../partials/footer.pug

@@ -9,6 +9,20 @@ var result = [
   'window_devicepixelratio=' + window.devicePixelRatio
 ];
 
+var testFor = ['csstransitions', 'cssanimations', 'cssborderradius'];
+
+var i = 0;
+var len = testFor.length;
+
+let support = {};
+
+for(i; i < len; i++){
+  support[testFor[i]] = Modernizr[testFor[i]]
+}
+
+result.push('support='+JSON.stringify(support));
+
+
 var getJSONP = function (url, success) {
   var ud = '_' + new Date().getTime();
   var script = document.createElement('script');

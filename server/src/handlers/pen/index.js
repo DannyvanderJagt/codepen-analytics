@@ -114,11 +114,11 @@ let Handler = {
       this.updateDatabase,
     ], (err, result) => {
       if(err){
-        result.res.json({valid: false})
+        result.res.json("[{valid: false}]")
         return;
       }
       
-      result.res.json({valid: true})
+      result.res.json("[{valid: true}]")
     });
   }, 
 
@@ -164,7 +164,6 @@ let Handler = {
 
   collectResult(data, next){
     let result = {};
-
     // Parse the User Agent.
     result = new UAParser()
                   .setUA(data.req.get('user-agent'))
@@ -196,39 +195,59 @@ let Handler = {
   updateDatabase(data, next){
     let result = data.result;
 
+    let day = new Date();
+    day.setHours(0,0,0,0);
+    day = day.getTime();
+
+    result.browser.name = result.browser.name.toLowerCase();
+    result.os.name = result.os.name.toLowerCase()
+    result.os.name = result.os.name.replace(/\ +/g, '-');
+
     // Prepare data.
     let inc = {
 
       // Browser data.
-      [`browsers.total`]: 1,
-      [`browsers.${result.browser.name.toLowerCase()}.total`]: 1,
-      [`browsers.${result.browser.name.toLowerCase()}.major.${result.browser.major}`]: 1,
-      [`browsers.${result.browser.name.toLowerCase()}.minor.${result.browser.version.replace(/\./g, '-')}`]: 1,
+      [`browsers.total.${result.browser.name}.total`]: 1,
+      [`browsers.total.${result.browser.name}.major.${result.browser.major}`]: 1,
+      [`browsers.total.${result.browser.name}.minor.${result.browser.version.replace(/\./g, '-')}`]: 1,
+
+      [`browsers.${day}.${result.browser.name}.total`]: 1,
+      [`browsers.${day}.${result.browser.name}.major.${result.browser.major}`]: 1,
+      [`browsers.${day}.${result.browser.name}.minor.${result.browser.version.replace(/\./g, '-')}`]: 1,
 
       // Devices.
-      [`devices.total`]: 1,
-      [`devices.${result.device.type}`]: 1,
+      [`devices.total.${result.device.type}`]: 1,
+      [`devices.${day}.${result.device.type}`]: 1,
 
       // Displays.
-      [`displays.total`]: 1,
-      [`displays.sizes.${result.display.width}x${result.display.height}`]:1,
-      [`displays.colordepth.${result.display.colorDepth}`]:1,
-      [`displays.pixeldepth.${result.display.pixelDepth}`]:1,
+      [`displays.total.sizes.${result.display.width}x${result.display.height}`]:1,
+      [`displays.total.colordepth.${result.display.colorDepth}`]:1,
+      [`displays.total.pixeldepth.${result.display.pixelDepth}`]:1,
 
-      // Windows.
-      [`windows.total`]: 1,
-      [`windows.sizes.${result.window.width}x${result.window.height}`]:1,
-      [`windows.devicePixelRatios.${result.window.devicePixelRatio}`]:1,
+      [`displays.${day}.sizes.${result.display.width}x${result.display.height}`]:1,
+      [`displays.${day}.colordepth.${result.display.colorDepth}`]:1,
+      [`displays.${day}.pixeldepth.${result.display.pixelDepth}`]:1,
 
-      // Engines
-      [`engines.total`]: 1,
-      [`engines.${result.engine.name.toLowerCase()}.total`]: 1,
-      [`engines.${result.engine.name.toLowerCase()}.${result.engine.version.replace(/\./g, '-')}`]: 1,
+      // // Windows.
+      [`windows.total.sizes.${result.window.width}x${result.window.height}`]:1,
+      [`windows.total.devicePixelRatios.${result.window.devicePixelRatio}`]:1,
+
+      [`windows.${day}.sizes.${result.window.width}x${result.window.height}`]:1,
+      [`windows.${day}.devicePixelRatios.${result.window.devicePixelRatio}`]:1,
+
+      // // Engines
+      [`engines.total.${result.engine.name.toLowerCase()}.total`]: 1,
+      [`engines.total.${result.engine.name.toLowerCase()}.${result.engine.version.replace(/\./g, '-')}`]: 1,
     
-      // Operation Systems.
-      [`os.total`]: 1,
-      [`os.${result.os.name.toLowerCase()}.total`]: 1,
-      [`os.${result.os.name.toLowerCase()}.${result.os.version.replace(/\./g, '-')}`]: 1,
+      [`engines.${day}.${result.engine.name.toLowerCase()}.total`]: 1,
+      [`engines.${day}.${result.engine.name.toLowerCase()}.${result.engine.version.replace(/\./g, '-')}`]: 1,
+    
+
+      // // Operation Systems.
+      [`os.total.${result.os.name}.total`]: 1,
+      [`os.total.${result.os.name}.${result.os.version.replace(/\./g, '-')}`]: 1,
+      [`os.${day}.${result.os.name}.total`]: 1,
+      [`os.${day}.${result.os.name}.${result.os.version.replace(/\./g, '-')}`]: 1,
     };
     
     // Process data.
@@ -241,7 +260,8 @@ let Handler = {
       {upsert: true, setDefaultsOnInsert: true, new: true}, 
       (err, pen) => {
         if(err){
-          next(new Error('Data could not be saved!'))
+          console.log(err);
+          next(new Error('Data could not be saved!'), data)
           return;
         }
 

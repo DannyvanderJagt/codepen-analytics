@@ -30,6 +30,8 @@ var _fsExtra2 = _interopRequireDefault(_fsExtra);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 // Path for cookies files.
 var cookiesPath = _path2.default.join(__dirname, '../', 'cookies.json');
 
@@ -74,6 +76,7 @@ var Scraper = {
     var pen = this.queue.splice(0, 1);
 
     this.getInformationFromPen(pen, function (err, data) {
+      console.log(Scraper.queue);
       _this2.next();
     });
   },
@@ -86,7 +89,7 @@ var Scraper = {
   },
   collectPensForProcessing: function collectPensForProcessing(cb) {
     _database2.default.models.Pen.find({
-      lastUsed: { '$gt': Date.now() - 3600000 } // 1 hour.
+      // lastUsed: {'$gt': Date.now() - 3600000 } // 1 hour.
     }, { id: true }, function (err, pens) {
 
       pens.forEach(function (pen) {
@@ -134,27 +137,41 @@ var Scraper = {
       var title = $('.pen-title-link').html();
       title = title.replace(/\n\ +/g, '');
 
-      var createdAt = $('#details-tab-description .dateline time').html();
-      createdAt = createdAt.replace(/\n\ +/g, '');
+      var timestamps = $('#details-tab-description .dateline time');
+      var createdAt = new Date(timestamps[0].attribs.datetime).getTime();
+
+      var modifiedAt = undefined;
+      if (timestamps[1]) {
+        modifiedAt = new Date(timestamps[1].attribs.datetime).getTime();
+      }
 
       if (cb) {
-        Scraper.storeInformationInDatabase(pen, { views: views, likes: likes, comments: comments, ownerHash: ownerHash, owner: owner, title: title, createdAt: createdAt }, cb);
+        Scraper.storeInformationInDatabase(pen, {
+          views: views, likes: likes, comments: comments, ownerHash: ownerHash, owner: owner, title: title, createdAt: createdAt, modifiedAt: modifiedAt }, cb);
       }
     });
   },
   storeInformationInDatabase: function storeInformationInDatabase(pen, data, cb) {
+    var _$set;
+
+    // Set time to midnight.
+    var day = new Date();
+    day.setHours(0, 0, 0, 0);
+    day = day.getTime();
+
     _database2.default.models.Pen.findOneAndUpdate({ id: pen }, {
-      likes: data.likes,
-      views: data.views,
-      comments: data.comments,
       title: data.title,
       owner: {
         hash: data.ownerHash,
         full: data.owner
       },
-      createdAt: data.createdAt
+      createdAt: data.createdAt,
+      modifiedAt: data.modifiedAt,
+
+      '$set': (_$set = {}, _defineProperty(_$set, 'likes.' + day, data.likes), _defineProperty(_$set, 'views.' + day, data.views), _defineProperty(_$set, 'comments.' + day, data.comments), _$set)
     }, { upsert: true, setDefaultsOnInsert: true, new: true }, function (err, pen) {
       if (err) {
+        console.log(err);
         cb(new Error('Data could not be saved!'));
         return;
       }

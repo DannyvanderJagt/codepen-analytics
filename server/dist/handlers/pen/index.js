@@ -121,11 +121,11 @@ var Handler = {
       cookies: cookies
     }), this.setCookie, this.collectResult, this.updateDatabase], function (err, result) {
       if (err) {
-        result.res.json({ valid: false });
+        result.res.json("[{valid: false}]");
         return;
       }
 
-      result.res.json({ valid: true });
+      result.res.json("[{valid: true}]");
     });
   },
 
@@ -168,7 +168,6 @@ var Handler = {
   },
   collectResult: function collectResult(data, next) {
     var result = {};
-
     // Parse the User Agent.
     result = new _uaParserJs2.default().setUA(data.req.get('user-agent')).getResult();
 
@@ -199,8 +198,16 @@ var Handler = {
 
     var result = data.result;
 
+    var day = new Date();
+    day.setHours(0, 0, 0, 0);
+    day = day.getTime();
+
+    result.browser.name = result.browser.name.toLowerCase();
+    result.os.name = result.os.name.toLowerCase();
+    result.os.name = result.os.name.replace(/\ +/g, '-');
+
     // Prepare data.
-    var inc = (_inc = {}, _defineProperty(_inc, 'browsers.total', 1), _defineProperty(_inc, 'browsers.' + result.browser.name.toLowerCase() + '.total', 1), _defineProperty(_inc, 'browsers.' + result.browser.name.toLowerCase() + '.major.' + result.browser.major, 1), _defineProperty(_inc, 'browsers.' + result.browser.name.toLowerCase() + '.minor.' + result.browser.version.replace(/\./g, '-'), 1), _defineProperty(_inc, 'devices.total', 1), _defineProperty(_inc, 'devices.' + result.device.type, 1), _defineProperty(_inc, 'displays.total', 1), _defineProperty(_inc, 'displays.sizes.' + result.display.width + 'x' + result.display.height, 1), _defineProperty(_inc, 'displays.colordepth.' + result.display.colorDepth, 1), _defineProperty(_inc, 'displays.pixeldepth.' + result.display.pixelDepth, 1), _defineProperty(_inc, 'windows.total', 1), _defineProperty(_inc, 'windows.sizes.' + result.window.width + 'x' + result.window.height, 1), _defineProperty(_inc, 'windows.devicePixelRatios.' + result.window.devicePixelRatio, 1), _defineProperty(_inc, 'engines.total', 1), _defineProperty(_inc, 'engines.' + result.engine.name.toLowerCase() + '.total', 1), _defineProperty(_inc, 'engines.' + result.engine.name.toLowerCase() + '.' + result.engine.version.replace(/\./g, '-'), 1), _defineProperty(_inc, 'os.total', 1), _defineProperty(_inc, 'os.' + result.os.name.toLowerCase() + '.total', 1), _defineProperty(_inc, 'os.' + result.os.name.toLowerCase() + '.' + result.os.version.replace(/\./g, '-'), 1), _inc);
+    var inc = (_inc = {}, _defineProperty(_inc, 'browsers.total.' + result.browser.name + '.total', 1), _defineProperty(_inc, 'browsers.total.' + result.browser.name + '.major.' + result.browser.major, 1), _defineProperty(_inc, 'browsers.total.' + result.browser.name + '.minor.' + result.browser.version.replace(/\./g, '-'), 1), _defineProperty(_inc, 'browsers.' + day + '.' + result.browser.name + '.total', 1), _defineProperty(_inc, 'browsers.' + day + '.' + result.browser.name + '.major.' + result.browser.major, 1), _defineProperty(_inc, 'browsers.' + day + '.' + result.browser.name + '.minor.' + result.browser.version.replace(/\./g, '-'), 1), _defineProperty(_inc, 'devices.total.' + result.device.type, 1), _defineProperty(_inc, 'devices.' + day + '.' + result.device.type, 1), _defineProperty(_inc, 'displays.total.sizes.' + result.display.width + 'x' + result.display.height, 1), _defineProperty(_inc, 'displays.total.colordepth.' + result.display.colorDepth, 1), _defineProperty(_inc, 'displays.total.pixeldepth.' + result.display.pixelDepth, 1), _defineProperty(_inc, 'displays.' + day + '.sizes.' + result.display.width + 'x' + result.display.height, 1), _defineProperty(_inc, 'displays.' + day + '.colordepth.' + result.display.colorDepth, 1), _defineProperty(_inc, 'displays.' + day + '.pixeldepth.' + result.display.pixelDepth, 1), _defineProperty(_inc, 'windows.total.sizes.' + result.window.width + 'x' + result.window.height, 1), _defineProperty(_inc, 'windows.total.devicePixelRatios.' + result.window.devicePixelRatio, 1), _defineProperty(_inc, 'windows.' + day + '.sizes.' + result.window.width + 'x' + result.window.height, 1), _defineProperty(_inc, 'windows.' + day + '.devicePixelRatios.' + result.window.devicePixelRatio, 1), _defineProperty(_inc, 'engines.total.' + result.engine.name.toLowerCase() + '.total', 1), _defineProperty(_inc, 'engines.total.' + result.engine.name.toLowerCase() + '.' + result.engine.version.replace(/\./g, '-'), 1), _defineProperty(_inc, 'engines.' + day + '.' + result.engine.name.toLowerCase() + '.total', 1), _defineProperty(_inc, 'engines.' + day + '.' + result.engine.name.toLowerCase() + '.' + result.engine.version.replace(/\./g, '-'), 1), _defineProperty(_inc, 'os.total.' + result.os.name + '.total', 1), _defineProperty(_inc, 'os.total.' + result.os.name + '.' + result.os.version.replace(/\./g, '-'), 1), _defineProperty(_inc, 'os.' + day + '.' + result.os.name + '.total', 1), _defineProperty(_inc, 'os.' + day + '.' + result.os.name + '.' + result.os.version.replace(/\./g, '-'), 1), _inc);
 
     // Process data.
     _database2.default.models.Pen.findOneAndUpdate({ id: data.pen }, {
@@ -208,7 +215,8 @@ var Handler = {
       'lastUsed': Date.now()
     }, { upsert: true, setDefaultsOnInsert: true, new: true }, function (err, pen) {
       if (err) {
-        next(new Error('Data could not be saved!'));
+        console.log(err);
+        next(new Error('Data could not be saved!'), data);
         return;
       }
 

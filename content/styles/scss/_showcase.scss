@@ -1,0 +1,41 @@
+.showcase{
+  position: relative;
+  width: 100%;
+  height: 450px;
+
+  background: url(../../images/header/background.svg) center center;
+
+  margin-top: 60px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+
+  & > .title{
+    width: 30%;
+    margin-top: 100px;
+  }
+
+  & > .header-image{
+    margin-top: 70px;
+    width: 60%;
+    animation: slide-in 1s ease-in-out;
+    transition: transform .5s ease-in-out; 
+
+    &:hover{
+      transform: translateY(-20px);
+    }
+  }
+}
+
+@keyframes slide-in{
+  0%{
+    transform: translateY(150px);
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}

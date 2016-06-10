@@ -44,6 +44,7 @@ let Scraper = {
     let pen = this.queue.splice(0,1);
 
     this.getInformationFromPen(pen, (err, data) => {
+      console.log(Scraper.queue)
       this.next();
     })
   },
@@ -58,7 +59,7 @@ let Scraper = {
   collectPensForProcessing(cb){
     Database.models.Pen.find(
       {
-        lastUsed: {'$gt': Date.now() - 3600000 } // 1 hour.
+        // lastUsed: {'$gt': Date.now() - 3600000 } // 1 hour.
       }, 
       {id: true},
       (err, pens) => {
@@ -108,32 +109,48 @@ let Scraper = {
       let title = $('.pen-title-link').html();
       title = title.replace(/\n\ +/g, '');
 
-      let createdAt = $('#details-tab-description .dateline time').html();
-      createdAt = createdAt.replace(/\n\ +/g, '');
+      let timestamps = $('#details-tab-description .dateline time');
+      let createdAt = new Date(timestamps[0].attribs.datetime).getTime();
+
+      let modifiedAt;
+      if(timestamps[1]){
+        modifiedAt = new Date(timestamps[1].attribs.datetime).getTime();
+      }
 
       if(cb){
-        Scraper.storeInformationInDatabase(pen, {views, likes, comments, ownerHash, owner, title, createdAt}, cb);
+        Scraper.storeInformationInDatabase(pen, {
+          views, likes, comments, ownerHash, owner, title, createdAt, modifiedAt}, cb);
       }
     })
   },
 
   storeInformationInDatabase(pen, data, cb){
+    // Set time to midnight.
+    let day = new Date()
+    day.setHours(0,0,0,0);
+    day = day.getTime(); 
+
     Database.models.Pen.findOneAndUpdate(
       {id: pen}, 
       {
-        likes: data.likes,
-        views: data.views,
-        comments: data.comments,
         title: data.title,
         owner: {
           hash: data.ownerHash,
           full: data.owner
         },
-        createdAt: data.createdAt
+        createdAt: data.createdAt,
+        modifiedAt: data.modifiedAt,
+
+        '$set': {
+          [`likes.${day}`] : data.likes,
+          [`views.${day}`] : data.views,
+          [`comments.${day}`]: data.comments
+        }
       },
       {upsert: true, setDefaultsOnInsert: true, new: true}, 
       (err, pen) => {
         if(err){
+          console.log(err);
           cb(new Error('Data could not be saved!'))
           return;
         }

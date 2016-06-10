@@ -94,8 +94,8 @@ export default {
   },
 
   achivements: {
-    [achivement]: {
-      day: Date,
-    }
+    // [achivement]: {
+      // day: Date,
+    // }
   }
 }

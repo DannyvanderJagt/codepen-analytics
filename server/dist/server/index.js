@@ -35,7 +35,7 @@ var app = (0, _express2.default)();
 
 // Handlers
 app.set('view engine', 'pug');
-app.set('views', _path2.default.join(__dirname, '../../../content'));
+app.set('views', _path2.default.join(__dirname, '../../../content/views'));
 
 app.use((0, _cookieParser2.default)(_config2.default.cookieSecret));
 
