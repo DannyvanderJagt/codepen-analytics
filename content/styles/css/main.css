@@ -399,7 +399,9 @@ h3 {
   height: 60px;
   z-index: 999;
   font-weight: lighter;
-  background: rgba(255, 255, 255, 0.95); }
+  border-top: 2px solid rgba(0, 0, 0, 0.8);
+  background: white;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1); }
   #menu > .icon {
     position: fixed;
     float: left;
@@ -432,7 +434,7 @@ h3 {
         font-weight: bold; }
       #menu > .items > a:hover {
         opacity: 1;
-        border-bottom: 2px solid #4A90E2; }
+        border-bottom: 2px solid black; }
       #menu > .items > a:active {
         opacity: 0.4; }
   #menu > .social {
@@ -458,7 +460,6 @@ h3 {
 
 .banner {
   width: 100%;
-  background: white;
   margin-bottom: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -519,10 +520,8 @@ h3 {
 .header {
   width: 100%;
   height: 300px;
-  margin-top: 0px;
-  background: url(../../images/logos/codepen-icon-faded.svg) no-repeat;
-  background-position-y: 210%;
-  background-position-x: center;
+  margin-top: 100px;
+  margin-bottom: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -534,27 +533,48 @@ h3 {
       -ms-flex-align: center;
           align-items: center;
   overflow: hidden; }
+  .header:hover > .background {
+    opacity: 1; }
+  .header:hover > h1 {
+    opacity: 0.1;
+    -webkit-transform: translateY(200px);
+            transform: translateY(200px); }
+  .header:hover > .codepen-icon {
+    opacity: 0.1;
+    -webkit-transform: translateY(200px);
+            transform: translateY(200px); }
+  .header:hover > .info {
+    -webkit-transform: translateY(200px);
+            transform: translateY(200px); }
+  .header > * {
+    -webkit-transition: all 1s;
+    transition: all 1s; }
+  .header > .background {
+    opacity: 0;
+    height: 300px;
+    margin-bottom: -300px;
+    z-index: 1; }
   .header > .codepen-icon {
-    margin-top: 100px; }
+    margin-top: 100px;
+    z-index: 2; }
   .header > .title {
+    position: relative;
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
+    z-index: 2;
     margin: 100px; }
-  .header > .header-image {
-    max-width: 676px;
-    width: 80%;
-    -webkit-animation: slide-in 1s ease-in-out;
-            animation: slide-in 1s ease-in-out; }
   .header > h1 {
     font-size: 3em;
     margin-top: 20px;
+    z-index: 2;
     font-weight: lighter; }
   .header > .info {
     margin-top: 10px;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex; }
+    display: flex;
+    z-index: 2; }
     .header > .info > .item {
       margin-left: 20px;
       font-size: 0.8em;
@@ -594,7 +614,8 @@ h3 {
       -ms-flex-align: end;
           align-items: flex-end;
   width: 100%;
-  height: 340px; }
+  height: 340px;
+  border-bottom: 4px solid black; }
   .footer > .center {
     -webkit-box-flex: 1;
         -ms-flex: 1;

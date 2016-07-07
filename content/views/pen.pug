@@ -19,6 +19,8 @@ html
       //- scss: header.scss
       //- 
       .header
+        //- img.background(src='http://s3-us-west-2.amazonaws.com/i.cdpn.io/57971.WrdQrr.489758f3-bc24-4a0e-a082-068755a1f066.png')
+        img.background(src='http://s3-us-west-2.amazonaws.com/i.cdpn.io/57971.VjeaVG.0ff7f793-b361-455a-9311-4228d79f13ca.png')
         img.codepen-icon(src='images/logos/codepen-icon.svg')
         h1 #{title || '#' + id}
         .info 
@@ -30,15 +32,15 @@ html
             .item By: 
               a.value(href='http://codepen.io/thesuitcase') #{owner.full}
       
+      .line
 
       .badges
         .badge.popular Popular
         .badge.picked Picked
       
       .line
-
-      .description
-         | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+         
+      .description Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
 
       .line
 
@@ -220,11 +222,11 @@ html
               .value 32%
             .tile
               img(src='images/os/windows.svg')
-              .title Left
+              .title Windows
               .value 53%
             .tile
               img(src='images/os/android.svg')
-              .title Right
+              .title Android
               .value 24%
 
       .line
@@ -263,7 +265,7 @@ html
         .banner
           .title Try another pen!
           .description Enter an url or pen id
-          
+
 
 
     //- 
